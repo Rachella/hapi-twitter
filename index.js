@@ -1,5 +1,6 @@
 //Hapi is class
 var Hapi = require('hapi');
+var Path = require('path');
 
 //instantiation
 var server = new Hapi.Server();
@@ -16,9 +17,18 @@ server.connection({
   }
 });
 
+server.views({
+  engines: {
+    html: require('handlebars')
+  },
+  path: Path.join(__dirname, 'templates') // Users/RachelS/Documents/GA/hapi-twitter/templates
+});
+
 //Any other dependencies
 var plugins = [
-//require MongoDB
+  { register: require('./routes/static-pages.js') },
+  { register: require('./routes/users.js') },
+  //require MongoDB
   {
     register: require('hapi-mongodb'),
     options: {
@@ -27,8 +37,8 @@ var plugins = [
         db: {
           native_parser: false
         }
-      }
-    } 
+      } 
+    }
   }
 ];
 
@@ -40,7 +50,7 @@ server.register(plugins, function(err) {
   }
 
 //Start server
-  server.start(function(err) {
-    console.log('info', 'Server running at: ' + server.info.uri);
+server.start(function(err) {
+  console.log('info', 'Server running at: ' + server.info.uri);
   });
 });
