@@ -1,0 +1,27 @@
+{
+  "name": "hapi-twitter",
+  "version": "0.0.1",
+  "description": "A WDI8 lesson to learn back-end using Hapi.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Rachella/hapi-twitter.git"
+  },
+  "keywords": [
+    "WDI8",
+    "Hapi"
+  ],
+  "author": "Rachel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rachella/hapi-twitter/issues"
+  },
+  "homepage": "https://github.com/Rachella/hapi-twitter#readme",
+  "dependencies": {
+    "hapi": "^8.8.0",
+    "hapi-mongodb": "^3.0.0"
+  }
+}
