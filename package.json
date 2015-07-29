@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Rachella/hapi-twitter#readme",
   "dependencies": {
+    "bcrypt": "^0.8.4",
     "handlebars": "^3.0.3",
     "hapi": "^8.8.0",
     "hapi-mongodb": "^3.0.0",
