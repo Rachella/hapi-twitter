@@ -1,0 +1,48 @@
+.wrapper {
+  background: #323D3F;
+  margin: 0;
+  padding: 0; 
+}
+
+body {
+  background: #323D3F;
+}
+
+.red {
+  color: #F93249;
+}
+
+img {
+  margin: 0 auto;
+}
+
+h1 {
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 80px;
+  color: #FFFFFF;
+}
+
+h2 {
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 60px;
+  color: #81D7D4;   
+}
+
+input, button {
+  padding: 5px;
+  margin: 5px;
+  font-size: 15px;
+  font: justify;
+  border-radius: 10px;
+  border: 2px solid #81D7D4;
+}
+
+button {
+  background-color: #81D7D4;
+  color: #FFFFFF;
+}
+
+button:hover, button:focus {
+  background-color: #71BCB8;
+  border-color: #71BCB8
+}
