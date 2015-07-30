@@ -10,18 +10,24 @@ $(document).ready(function (){
 
   $('#sign-in').click(function() {
   event.preventDefault();
+    var username = $('input[id="username"]');
+    var password = $('input[id="password"]');
     $.ajax({
       type: 'POST',
-        url: '/users',
-      data: {
-        user: {      
-          username: username.val(),
-          password: password.val()
-        }  
-      },
+        url: 'sessions',
+        data: {
+          user: {      
+            username: username.val(),
+            password: password.val()
+          }
+        },  
       dataType: 'json',
       success: function(response) {
-      console.log("Success", response);
+      if (response.userExists) { 
+        console.log("Success", response);
+        } else {
+          console.log("No such user or wrong password")
+        }
       }
     });
   });    
