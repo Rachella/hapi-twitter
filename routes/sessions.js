@@ -1,5 +1,6 @@
 var Bcrypt = require('bcrypt');
-
+var Auth = require('./auth'); //var Auth = {};
+//to do Auth.authenticated() - do the same in auth.js
 exports.register = function(server, options, next){
 
   server.route([
@@ -36,7 +37,7 @@ exports.register = function(server, options, next){
             db.collection('sessions').insert(session, function(err, writeResult){
               if (err) {return reply('Internal MongoDB error', err); }
 
-              //4 set same seesion_id in the CLIENT's cookie
+              //4 set same session_id in the CLIENT's cookie
               request.session.set('hapi_twitter_session', session);
 
               reply({ userExists: true });
@@ -45,7 +46,21 @@ exports.register = function(server, options, next){
         });
 
       }      
-    }])
+    },
+    {
+      //defining a route to check if the user is authenticated / logged in
+      method: 'GET',
+      path: '/authenticated',
+      handler: function(request, reply){
+        //normally logic is written here
+        //but we will write it somewhere else so other files or routes can also use this method
+        var callback = function(result){
+          reply(result);
+        };
+        Auth.authenticated(request, callback);
+      }
+    }
+  ]);
 
   next();
 };
