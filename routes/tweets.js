@@ -7,7 +7,6 @@ exports.register = function(server, options, next) {
       method: 'GET',
       path: '/tweets',
       handler: function(request, reply){
-        //access the mongodb
         var db = request.server.plugins['hapi-mongodb'].db;
 
         db.collection('tweets').find().toArray(function(err, tweets){

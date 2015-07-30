@@ -1,11 +1,8 @@
-//Hapi is class
 var Hapi = require('hapi');
 var Path = require('path');
 
-//instantiation
 var server = new Hapi.Server();
 
-//Configure server connection
 server.connection({
   host: '0.0.0.0',
   port: 3000,
@@ -21,10 +18,9 @@ server.views({
   engines: {
     html: require('handlebars')
   },
-  path: Path.join(__dirname, 'templates') // Users/RachelS/Documents/GA/hapi-twitter/templates
+  path: Path.join(__dirname, 'templates') 
 });
 
-//Any other dependencies
 var plugins = [
   { register: require('./routes/static-pages.js') },
   { register: require('./routes/users.js') },
@@ -35,11 +31,10 @@ var plugins = [
     options: {
       cookieOptions: {
         password: 'sdgrhbbd',
-        isSecure: false //saying that we aren't using https, yet, for development
+        isSecure: false 
       }
     }
   },    
-  //require MongoDB
   {
     register: require('hapi-mongodb'),
     options: {
@@ -53,14 +48,11 @@ var plugins = [
   }
 ];
 
-//Start server
 server.register(plugins, function(err) {
-  // check error
   if (err) {
     throw err;
   }
 
-//Start server
 server.start(function(err) {
   console.log('info', 'Server running at: ' + server.info.uri);
   });
