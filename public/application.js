@@ -1,26 +1,31 @@
 $(document).ready(function (){
 
-  var username = $('#username');
-  var password = $('#password');  
+  // var username = $('#username');
+  // var password = $('#password');  
 
   var name = $('#name');
   var email = $('#email');  
   var username2 = $('#username2');
   var password2 = $('#password2');  
 
+  function addTweet(entry) {
+    $('.tweetlist').prepend('<li>' + entry.message + '</li>');
+  }
+
   $('#sign-in').click(function() {
-  event.preventDefault();
+    event.preventDefault();
     var username = $('input[id="username"]');
     var password = $('input[id="password"]');
     $.ajax({
       type: 'POST',
-        url: 'sessions',
-        data: {
-          user: {      
-            username: username.val(),
-            password: password.val()
-          }
-        },  
+      //indent?
+      url: 'sessions',
+      data: {
+        user: {      
+          username: username.val(),
+          password: password.val()
+        }
+      },  
       dataType: 'json',
       success: function(response) {
       if (response.userExists) { 
@@ -36,7 +41,7 @@ $(document).ready(function (){
     event.preventDefault();
     $.ajax({
       type: 'POST',
-        url: '/users',
+      url: '/users',
       data: {
         user: {      
           name: name.val(),
@@ -51,6 +56,48 @@ $(document).ready(function (){
       }
     });
   });
+
+  //Write a tweet
+  $('#update').click(function(){
+    event.preventDefault();
+    var update = $('input[id="tweet-here"]');
+    console.log(update.val())
+    $.ajax({
+      type: 'POST',
+      url: '/tweets',
+      data: {
+        tweet: {message: update.val()}
+      },
+      dataType: 'json',
+      success: function(newTweet) {
+        addTweet(newTweet);
+        console.log('Success', newTweet);
+      },
+      error: function() {
+        console.log('Error adding post');
+      }
+    });
+  });
+
+
+  //List all tweets
+  var getData = function(){
+    $.ajax({
+      type: 'GET',
+      url: '/tweets',
+      dataType: 'json',
+      success: function(entries){
+        $.each(entries, function(i, entry) {
+        addTweet(entry);
+        });
+        console.log('Success', entries)
+      },
+      error: function() {
+        console.log('Error getting posts');
+      }
+    });
+  };
+  getData();
 })    
 
 

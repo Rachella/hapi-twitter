@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tweets</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="public/application.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href="public/custom.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Reenie+Beanie' rel='stylesheet' type='text/css'>
+  <link rel="icon" href="public/images/favicon2.ico">
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container-fluid">
+      <!-- Header -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h1 id="tweet_header">T<span class="red">w</span>it T<span class="red">w</span>it T<span class="red">w</span>eet</h1>
+          <!-- Write a tweet -->
+          <form class="tweet-form">
+            <div class="col-xs-11">
+              <input type="text" name="tweet-entry" id="tweet-here" placeholder="What's happening?">
+            </div>  
+            <div class="col-xs-1">
+              <button id="update">Update</button>
+            </div>   
+          </form>
+          <!-- List of Tweets -->
+          <ul class="tweetlist">
+          </ul>
+        </div>
+      </div>
+    </div>          
+  </div>  
+</body>
+</html>

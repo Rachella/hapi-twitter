@@ -29,13 +29,31 @@ h2 {
 }
 
 input, button {
-  padding: 5px;
+  padding: 10px;
   margin: 5px;
   font-size: 15px;
   font: justify;
   border-radius: 10px;
   border: 2px solid #81D7D4;
 }
+
+
+li, .tweet-form > div > button, input {
+  height: 50px;
+  width: 100%;
+}
+
+li {
+  color: #FFFFFF;
+  font-size: 20px;
+  font: justify;  
+  border-radius: 10px;
+  border: 5px solid #71BCB8;
+  margin: 80px 5px 5px;
+  list-style: none;
+  padding: 10px;  
+}
+
 
 button {
   background-color: #81D7D4;
